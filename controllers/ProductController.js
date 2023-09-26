@@ -233,7 +233,8 @@ class ProductController {
             console.log(e);
             return res.status(500).json({
                 success: false,
-                message: "Server error"
+                message: "Server error",
+                error: e
             })
         }
     }
