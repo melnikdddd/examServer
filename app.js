@@ -20,12 +20,12 @@ socket(server);
 
 
 
-mongoose
-    .connect(process.env.MONGOOSE_CONNECT_URI)
+mongoose.connect(process.env.MONGOOSE_CONNECT_URI)
     .then(() => console.log('MongoDB has connected'))
     .catch(error => console.log(error));
 
 
+console.log(process.env.MONGOOSE_CONNECT_URI)
 server.listen(process.env.PORT || 8000, () => {
     console.log("Server listening as " + process.env.PORT );
 })
