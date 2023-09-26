@@ -21,7 +21,7 @@ socket(server);
 
 
 mongoose
-    .connect(`mongodb+srv://${process.env.DB_NAME}:${process.env.DB_PASSWORD}@cluster0.fvidml8.mongodb.net/?retryWrites=true&w=majority`)
+    .connect(process.env.MONGOOSE_CONNECT_URI)
     .then(() => console.log('MongoDB has connected'))
     .catch(error => console.log(error));
 
