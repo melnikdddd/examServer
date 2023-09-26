@@ -1,14 +1,12 @@
 import express from "express";
 import mongoose from "mongoose";
 import MainRouter from "./routes/MainRouter.js";
-import dotenv from "dotenv";
 import limiter from "./utils/middleware/limitter.js";
 import bodyParser from "body-parser"
 import cors from "cors"
 import http from "http"
 import socket from "./utils/Socket/socket.js";
 
-dotenv.config();
 
 const app = express();
 app.use(cors({origin: "*"}))
