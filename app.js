@@ -21,8 +21,7 @@ const server = http.createServer(app);
 socket(server);
 
 
-const PORT = +process.env.PORT;
-
+const PORT = + process.env.PORT;
 
 mongoose
     .connect(`mongodb+srv://${process.env.DB_NAME}:${process.env.DB_PASSWORD}@cluster0.fvidml8.mongodb.net/?retryWrites=true&w=majority`)
@@ -30,6 +29,6 @@ mongoose
     .catch(error => console.log(error));
 
 
-server.listen(PORT, () => {
+server.listen(PORT || 8000, () => {
     console.log("Server listening as localhost:" + PORT);
 })
