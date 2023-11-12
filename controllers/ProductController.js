@@ -21,15 +21,7 @@ class ProductController {
             const ownerId = req.userId;
             const body = req.body;
 
-
-            // const decodedImages = [];
-            // if (req.body.files){
-            //     const files = req.body.files;
-            //    decodedImages.push(..._decodingImagesFromArray(files))
-            // }
-
             const file = req.file;
-
 
             const ext = getFileExtensionFromFilename(file.originalname);
 
@@ -39,7 +31,6 @@ class ProductController {
             if (!productCoverBuffer) {
                 return res.status(500).json({success: false, message: "Server error"});
             }
-
 
             const flag = await addUserProductsType(ownerId, body.productType);
 

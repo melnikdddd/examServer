@@ -23,7 +23,6 @@ const socket = (server) => {
             onlineUsers.set(user._id, socket.id);
             await setOnline(user._id);
 
-
         });
         socket.on("disconnect", async () => {
             const currentId = socket?.currentUser?._id || null;
@@ -42,30 +41,24 @@ const socket = (server) => {
                 return;
             }
 
-
             //обновляем базу данных сообщений
             const chat = chatId ?
                 await updateMessages(chatId, message) : await createChat(message);
 
             data.chatId = chat._id;
 
-
             await updateBoth(ownId, data);
-            //отправялем сообщение второму пользователю
 
             socket.emit("newMessage", data);
 
+            //отправялем сообщение второму пользователю
+
             const userSocket = onlineUsers.get(user._id);
-            console.log("ownId: " +  ownId, +", anyUserId: " + user._id);
-
-
             if (userSocket) {
-                console.log("any user get message");
                 data.user = socket.currentUser;
                 io.to(userSocket).emit("newMessage", data);
             }
         })
-
         socket.on("readChat", async (data) => {
             await readChat(data)
         })

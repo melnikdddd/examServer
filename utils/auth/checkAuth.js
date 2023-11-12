@@ -8,7 +8,6 @@ const _checkAuth = (req, res, next) =>{
         return res.status(403).json({message: 'You are is not auth'});
     }
 
-    //get token form header and split him
     const token = authorizationToken.split(' ')[1];
 
     if(!token){
